@@ -13,7 +13,7 @@ let userInput = prompt(
 );
 
 // remove whitespaces and commas to make string an array, trim function doesn't work for this
-const userArray = userInput.split(", ");
+const userArray = userInput.split(",");
 
 // function that creates a new object for each user, returns function with proper key values
 const addFlavor = (array) => {
@@ -21,10 +21,11 @@ const addFlavor = (array) => {
 
   // loop through list of flavors and add them to empty object on first iteration, after increase value by 1
   for (i = 0; i < array.length; i++) {
-    if (array[i] in userObject == true) {
-      userObject[array[i]]++;
+    let flavor = array[i].trim();
+    if (flavor in userObject == true) {
+      userObject[flavor]++;
     } else {
-      userObject[array[i]] = 1;
+      userObject[flavor] = 1;
     }
   }
   return userObject;
